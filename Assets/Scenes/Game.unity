@@ -709,6 +709,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7576366078114451672, guid: a6f6d58c6372d2d4b9551c2cc35c3395, type: 3}
+      propertyPath: _speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576366078114451672, guid: a6f6d58c6372d2d4b9551c2cc35c3395, type: 3}
+      propertyPath: _jumpHeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576366078114451672, guid: a6f6d58c6372d2d4b9551c2cc35c3395, type: 3}
+      propertyPath: _jumpDamping
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8174825684366666361, guid: a6f6d58c6372d2d4b9551c2cc35c3395, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
