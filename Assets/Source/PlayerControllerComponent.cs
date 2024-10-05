@@ -13,12 +13,15 @@ public class PlayerControllerComponent : MonoBehaviour
     private InputAction _sprintInput;
 
     public CommanderComponent CommanderComponent { get; private set; }
+    public CombatComponent CombatComponent { get; private set; }
 
     private void Start()
     {
         _camera = Camera.main;
         _movementComponent = GetComponent<MovementComponent>();
         CommanderComponent = GetComponent<CommanderComponent>();
+        CombatComponent = GetComponent<CombatComponent>();
+
         _moveInput = InputSystem.actions.FindAction("Move");
         _jumpInput = InputSystem.actions.FindAction("Jump");
         _interactInput = InputSystem.actions.FindAction("Interact");
@@ -61,7 +64,11 @@ public class PlayerControllerComponent : MonoBehaviour
 
     private void Attack()
     {
-        // TODO
-        Debug.Log("Attack");
+        if (!CombatComponent)
+        {
+            return;
+        }
+
+        CombatComponent.Attack();
     }
 }

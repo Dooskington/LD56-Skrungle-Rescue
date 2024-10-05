@@ -20,6 +20,11 @@ public class CommanderComponent : MonoBehaviour
             }
 
             WorkerAIControllerComponent worker = _workers.Find(w => w.State == WorkerState.Following);
+            if (worker == null)
+            {
+                return;
+            }
+
             worker.CommandCarryItem(carryableComponent);
         }
     }

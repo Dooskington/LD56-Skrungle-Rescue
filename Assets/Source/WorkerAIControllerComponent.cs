@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public enum WorkerState
@@ -83,6 +84,7 @@ public class WorkerAIControllerComponent : MonoBehaviour
         }
         else
         {
+            LookAt(_player.transform.position);
             _movementComponent.Movement = Vector3.zero;
         }
     }
@@ -131,6 +133,15 @@ public class WorkerAIControllerComponent : MonoBehaviour
         Vector3 direction = (targetPosition - transform.position).normalized;
         _movementComponent.Movement = direction;
 
+        if (direction != Vector3.zero)
+        {
+            transform.forward = direction;
+        }
+    }
+
+    private void LookAt(Vector3 targetPosition)
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
         if (direction != Vector3.zero)
         {
             transform.forward = direction;
