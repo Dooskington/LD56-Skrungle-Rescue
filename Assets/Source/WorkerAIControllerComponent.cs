@@ -10,14 +10,13 @@ public enum WorkerState
 }
 
 [RequireComponent(typeof(MovementComponent))]
-public class WorkerAIControllerComponent : MonoBehaviour
+public class WorkerAIControllerComponent : AIControllerComponent
 {
     [SerializeField] private float _playerJoinDistance = 10.0f;
     [SerializeField] private float _playerMinFollowDistance = 3.0f;
     [SerializeField] private float _carryableMinDistance = 1.0f;
     [SerializeField] private float _dropOffMinDistance = 1.0f;
 
-    private MovementComponent _movementComponent;
     private PlayerControllerComponent _player;
     private CarryableComponent _currentCarryable;
     private Transform _dropOffTransform;
@@ -26,7 +25,8 @@ public class WorkerAIControllerComponent : MonoBehaviour
 
     private void Start()
     {
-        _movementComponent = GetComponent<MovementComponent>();
+        Init();
+
         _player = FindFirstObjectByType<PlayerControllerComponent>();
         _dropOffTransform = GameObject.Find("DropOff").transform;
 
@@ -125,26 +125,6 @@ public class WorkerAIControllerComponent : MonoBehaviour
             Destroy(_currentCarryable.gameObject);
             _currentCarryable = null;
             State = WorkerState.Idle;
-        }
-    }
-
-    private void MoveTowardsAndLookAt(Vector3 targetPosition)
-    {
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        _movementComponent.Movement = direction;
-
-        if (direction != Vector3.zero)
-        {
-            transform.forward = direction;
-        }
-    }
-
-    private void LookAt(Vector3 targetPosition)
-    {
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        if (direction != Vector3.zero)
-        {
-            transform.forward = direction;
         }
     }
 

@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 39
+  controlID: 19272
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -94,10 +94,10 @@ MonoBehaviour:
       displayed: 1
       id: unity-scene-view-toolbar
       index: 0
-      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":-241.5999755859375,"y":24.799999237060548},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":1,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":-241.599853515625,"y":24.799999237060548},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":1,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
-      snapOffset: {x: -241.59998, y: 24.8}
+      snapOffset: {x: -241.59985, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 1
       layout: 1
@@ -620,9 +620,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -40.239243, y: 60.05278, z: -74.41213}
+    m_Target: {x: -4.2017407, y: 100.54483, z: 152.47862}
     speed: 2
-    m_Value: {x: -40.180336, y: 60.06003, z: -74.36955}
+    m_Value: {x: -4.0990477, y: 100.54071, z: 152.42282}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -668,13 +668,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.006835147, y: 0.99257684, z: -0.06680121, w: -0.10159516}
+    m_Target: {x: -0.01431574, y: -0.59160864, z: -0.010924091, w: 0.80631524}
     speed: 2
-    m_Value: {x: -0.006956908, y: 0.9924764, z: -0.06799091, w: -0.10158489}
+    m_Value: {x: -0.014299264, y: -0.59243673, z: -0.010938694, w: 0.8054157}
   m_Size:
-    m_Target: 89.0791
+    m_Target: 0.67279005
     speed: 2
-    m_Value: 89.0791
+    m_Value: 0.6727929
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -770,9 +770,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: f2f7feff92f1ffffa4faffffb0faffffb2faffff28920000
+      m_SelectedIDs: a8b4fdff
+      m_LastClickedID: -150360
+      m_ExpandedIDs: 86c2fdfff2f7feffd40fffff92f1ffffa4faffffb2faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 40
+  controlID: 19273
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -919,7 +919,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -1074,7 +1074,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ce920000
+    m_ExpandedIDs: 00000000ce92000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1100,21 +1100,21 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: a8b4fdff
+    m_LastClickedInstanceID: -150360
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300005aaf000076a600000e48fcff882007008c68000074670000d26a00000e6e0000fa82000028d80100de5502001cb6000054fc09000668000026680000fc670000046800001e68000096210000906e0000446d0000663a0000643a000074f203009c210000e8b7010096ba0100caa40000508b010040610000fe600000f26800003a680000b07200008c070100d27100006095000090a000004a2702002e2d010098c40000207401001e740100000000000074010018ef0100bec900008a8d00008c8d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: CombatComponent
-      m_OriginalName: CombatComponent
+      m_Name: AIControllerComponent
+      m_OriginalName: AIControllerComponent
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 61668
+      m_UserData: 90378
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -1206,7 +1206,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -1360
+  m_LastSelectedObjectID: -61468
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
