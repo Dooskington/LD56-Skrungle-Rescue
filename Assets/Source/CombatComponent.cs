@@ -5,6 +5,7 @@ public class CombatComponent : MonoBehaviour
     [SerializeField] private BoxCollider _attackCollider;
     [SerializeField] private float _attackDuration = 0.75f;
     [SerializeField] private float _attackCooldown = 0.25f;
+    [SerializeField] private float _damage = 1.0f;
 
     private float _lastAttackTime;
     private bool _isAttacking;
@@ -20,7 +21,7 @@ public class CombatComponent : MonoBehaviour
 
     private void CheckAttackHitbox()
     {
-        Collider[] hitColliders = Physics.OverlapBox(_attackCollider.transform.position, _attackCollider.size / 2, _attackCollider.transform.rotation);
+        Collider[] hitColliders = Physics.OverlapBox(_attackCollider.transform.position, _attackCollider.size / 2.0f, _attackCollider.transform.rotation);
         foreach (Collider hitCollider in hitColliders)
         {
             HealthComponent healthComponent = hitCollider.GetComponent<HealthComponent>();
@@ -29,9 +30,7 @@ public class CombatComponent : MonoBehaviour
                 continue;
             }
 
-            //healthComponent.TakeDamage();
-
-            Debug.Log("Hit " + hitCollider.name);
+            healthComponent.TakeDamage(_damage);
         }
     }
 
