@@ -188,6 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16f3aded789ae448a35133cd945bf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 5
+  _impactEffectMaterial: {fileID: 2100000, guid: 5103ab749a58eaa4aa1d60eea19288be, type: 2}
+  _impactEffectDuration: 0.2
 --- !u!1 &8060023497764016830
 GameObject:
   m_ObjectHideFlags: 0
