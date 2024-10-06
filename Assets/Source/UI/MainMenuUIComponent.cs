@@ -7,6 +7,7 @@ public class MainMenuUIComponent : MonoBehaviour
     public void OnClickPlay()
     {
         GameManager.Instance.StartGame();
+        _aboutPanel.SetActive(false);
     }
 
     public void OnClickAbout()
