@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private bool _isGameWon;
     private List<WorkerAIControllerComponent> _workers = new List<WorkerAIControllerComponent>();
 
+    public int TotalSkrungle { get { return _workers.Count; } }
+
     private void Start()
     {
         InitSingleton();

@@ -8,9 +8,11 @@ public class WorkerCounterUIComponent : MonoBehaviour
     private PlayerControllerComponent _player;
 
     private int? _lastTotalValue;
+    /*
     private int? _lastFollowingValue;
     private int? _lastBusyValue;
     private int? _lastIdleValue;
+    */
 
     private void Start()
     {
@@ -33,6 +35,7 @@ public class WorkerCounterUIComponent : MonoBehaviour
             dirty = true;
         }
 
+        /*
         if (!_lastFollowingValue.HasValue || (_lastFollowingValue.Value != following))
         {
             _lastFollowingValue = following;
@@ -50,14 +53,18 @@ public class WorkerCounterUIComponent : MonoBehaviour
             _lastIdleValue = idle;
             dirty = true;
         }
+        */
 
         if (dirty)
         {
-            string str = $"<b>{totalRescued}</b> Skoombinis Rescued";
+            int totalSkrungle = GameManager.Instance.TotalSkrungle;
+            string str = $"<b>{totalRescued}/{totalSkrungle}</b> Skrungles Rescued";
+            /*
             if (totalRescued > 0)
             {
                 str += $"\n<size=75%><b>{_lastFollowingValue.Value}</b> Following\n<b>{_lastBusyValue.Value}</b> Busy\n<b>{_lastIdleValue.Value}</b> Idle</size>";
             }
+            */
 
             _text.text = str;
         }
