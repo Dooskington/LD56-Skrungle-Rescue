@@ -212,6 +212,7 @@ MonoBehaviour:
   _carryableLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  _collectAudio: {fileID: 8300000, guid: 6f4b4d2945830ea4391bf1f4eda506d7, type: 3}
 --- !u!114 &6684676225698464312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +257,8 @@ MonoBehaviour:
   _maxHealth: 6
   _impactEffectMaterial: {fileID: 2100000, guid: 5103ab749a58eaa4aa1d60eea19288be, type: 2}
   _impactEffectDuration: 0.1
+  _hurtAudio: {fileID: 8300000, guid: 7270e93438ee18e4c9c544da0064d0cc, type: 3}
+  _dieAudio: {fileID: 8300000, guid: ef5aa10ed9cef6c4797fddb0364b9b05, type: 3}
   _animator: {fileID: 5468371339991464932}
 --- !u!1001 &1912089663974049397
 PrefabInstance:
@@ -316,8 +319,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f0db542e473460245bd52cbdcaf38227, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6694149824257733095}
   m_SourcePrefab: {fileID: 100100000, guid: f0db542e473460245bd52cbdcaf38227, type: 3}
+--- !u!1 &1605659413766716196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0db542e473460245bd52cbdcaf38227, type: 3}
+  m_PrefabInstance: {fileID: 1912089663974049397}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6694149824257733095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605659413766716196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd07216e6acfe9409994052a2dc377c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _footstep: {fileID: 8300000, guid: 39e37e05cc7936449827d9e867559078, type: 3}
+  _climb: {fileID: 8300000, guid: 1d189799be057684591ed0a76f165745, type: 3}
+  _jump: {fileID: 8300000, guid: bfcd33fd755c3e7468079aa5dcb5dbc2, type: 3}
 --- !u!4 &2090692868768522654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f0db542e473460245bd52cbdcaf38227, type: 3}

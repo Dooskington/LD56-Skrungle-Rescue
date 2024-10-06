@@ -293,6 +293,9 @@ MonoBehaviour:
   _maxHealth: 3
   _impactEffectMaterial: {fileID: 2100000, guid: 5103ab749a58eaa4aa1d60eea19288be, type: 2}
   _impactEffectDuration: 0.1
+  _hurtAudio: {fileID: 8300000, guid: 3db1acfdd091eed4785857418aea8928, type: 3}
+  _dieAudio: {fileID: 8300000, guid: 0712f6cf68e992c448852cc6b025d3f7, type: 3}
+  _animator: {fileID: 0}
 --- !u!4 &8083807708286255025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7d4dd98afe429d4dad27817191da426, type: 3}

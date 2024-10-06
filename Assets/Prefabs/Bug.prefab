@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee876634bb3dc74b90ff1703adee957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6
+  _speed: 5
   _sprintModifier: 1.75
   _turnSpeed: 25
   _jumpHeight: 4
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAttackDistance: 16
-  _playerMinFollowDistance: 1.5
+  _playerMinFollowDistance: 2
   _idleWanderIntervalMinSeconds: 3
   _idleWanderIntervalMaxSeconds: 10
   _idleWanderRadius: 6
@@ -116,9 +116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16f3aded789ae448a35133cd945bf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
+  _maxHealth: 3
   _impactEffectMaterial: {fileID: 2100000, guid: 5103ab749a58eaa4aa1d60eea19288be, type: 2}
   _impactEffectDuration: 0.2
+  _hurtAudio: {fileID: 8300000, guid: 7270e93438ee18e4c9c544da0064d0cc, type: 3}
+  _dieAudio: {fileID: 8300000, guid: ef5aa10ed9cef6c4797fddb0364b9b05, type: 3}
   _animator: {fileID: 0}
 --- !u!114 &-1360137888167721189
 MonoBehaviour:
@@ -134,8 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackCollider: {fileID: 7201427438703395905}
   _attackDuration: 0.75
-  _attackCooldown: 0.25
-  _damage: 1
+  _attackCooldown: 0.5
+  _damage: 0.5
   _animator: {fileID: 0}
 --- !u!1 &8273423230544846089
 GameObject:

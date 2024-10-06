@@ -9,6 +9,9 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private Material _impactEffectMaterial;
     [SerializeField] private float _impactEffectDuration = 0.1f;
 
+    [SerializeField] private AudioClip _hurtAudio;
+    [SerializeField] private AudioClip _dieAudio;
+
     [Header("Animation")]
     [SerializeField] private Animator _animator;
 
@@ -57,7 +60,7 @@ public class HealthComponent : MonoBehaviour
 
     private void Die()
     {
-        // TODO play effect?
+        AudioEvent.Play3D(_dieAudio, transform.position);
 
         if (_animator != null)
         {
@@ -80,6 +83,10 @@ public class HealthComponent : MonoBehaviour
         if (Health <= 0)
         {
             Die();
+        }
+        else
+        {
+            AudioEvent.Play3D(_hurtAudio, transform.position);
         }
     }
 }

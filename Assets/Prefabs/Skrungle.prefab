@@ -119,6 +119,8 @@ MonoBehaviour:
   _maxHealth: 3
   _impactEffectMaterial: {fileID: 2100000, guid: 5103ab749a58eaa4aa1d60eea19288be, type: 2}
   _impactEffectDuration: 0.1
+  _hurtAudio: {fileID: 8300000, guid: 7270e93438ee18e4c9c544da0064d0cc, type: 3}
+  _dieAudio: {fileID: 8300000, guid: ef5aa10ed9cef6c4797fddb0364b9b05, type: 3}
   _animator: {fileID: 9157763087347615662}
 --- !u!1001 &3349689300853373503
 PrefabInstance:
@@ -195,8 +197,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f0db542e473460245bd52cbdcaf38227, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3044833318848693772}
   m_SourcePrefab: {fileID: 100100000, guid: f0db542e473460245bd52cbdcaf38227, type: 3}
+--- !u!1 &2503180581907957614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0db542e473460245bd52cbdcaf38227, type: 3}
+  m_PrefabInstance: {fileID: 3349689300853373503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3044833318848693772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2503180581907957614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd07216e6acfe9409994052a2dc377c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _footstep: {fileID: 8300000, guid: 39e37e05cc7936449827d9e867559078, type: 3}
+  _jump: {fileID: 8300000, guid: bfcd33fd755c3e7468079aa5dcb5dbc2, type: 3}
 --- !u!4 &3023821725087817172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f0db542e473460245bd52cbdcaf38227, type: 3}

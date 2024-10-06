@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             {
                 _isGameOver = true;
             }
-            else
+            else if (_workers.Count > 0)
             {
                 if (_player.CommanderComponent.Workers.Count >= _workers.Count)
                 {

@@ -5,6 +5,7 @@ public class CommanderComponent : MonoBehaviour
 {
     [SerializeField] private float _commandRaycastDistance = 10.0f;
     [SerializeField] private LayerMask _carryableLayerMask;
+    [SerializeField] private AudioClip _collectAudio;
 
     private PlayerControllerComponent _player;
     private bool _isCarryingSkrungles = false;
@@ -64,6 +65,8 @@ public class CommanderComponent : MonoBehaviour
         }
 
         _workers.Add(worker);
+
+        AudioEvent.Play3D(_collectAudio, transform.position);
     }
 
     public void UnregisterWorker(WorkerAIControllerComponent worker)
