@@ -25,6 +25,7 @@ public class MovementComponent : MonoBehaviour
     private Vector3 _climbHitboxOrigin;
     private Vector3 _climbDirection;
     private Vector3 _climbDirectionHorizontal;
+    private float _gravity;
 
     public Vector2 ClimbInput { get; set; }
     public Vector3 Movement { get; set; }
@@ -43,6 +44,13 @@ public class MovementComponent : MonoBehaviour
             _jumpCount = 0;
             _verticalVelocity = 0.0f;
             _exitedClimb = false;
+            _gravity = 0.0f;
+        }
+
+        if (!isGrounded)
+        {
+            _gravity += Physics.gravity.y * 2.0f * Time.deltaTime;
+            _gravity = Mathf.Max(_gravity, -50.0f);
         }
 
         float modifier = (!isGrounded && !_isClimbing) ? 1.0f : (IsSprinting ? _sprintModifier : 1.0f);
@@ -113,7 +121,8 @@ public class MovementComponent : MonoBehaviour
             if (isGrounded || (_canDoubleJump && (_jumpCount < 2)))
             {
                 _jumpCount += 1;
-                _verticalVelocity += Mathf.Sqrt(-_jumpHeight * Physics.gravity.y);
+                _verticalVelocity = Mathf.Sqrt(-_jumpHeight * Physics.gravity.y);
+                _gravity = 0.0f;
             }
 
             if (_exitedClimb && (_jumpCount > 1))
@@ -122,7 +131,7 @@ public class MovementComponent : MonoBehaviour
             }
         }
 
-        _verticalVelocity += Physics.gravity.y * Time.deltaTime;
+        _verticalVelocity += _gravity * Time.deltaTime;
         _characterController.Move((Vector3.up * _verticalVelocity) * Time.deltaTime);
     }
 

@@ -132,7 +132,11 @@ public class WorkerAIControllerComponent : AIControllerComponent
         }
 
         float distance = Vector3.Distance(transform.position, _player.transform.position);
-        if (distance >= _playerMinFollowDistance)
+        if (distance > (_playerJoinDistance * 1.5f))
+        {
+            BeginIdleState();
+        }
+        else if (distance >= _playerMinFollowDistance)
         {
             MoveTowardsAndLookAt(_player.transform.position);
         }

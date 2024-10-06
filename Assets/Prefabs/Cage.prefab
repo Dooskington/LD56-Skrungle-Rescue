@@ -215,15 +215,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3627869349135292833}
-    - targetCorrespondingSourceObject: {fileID: -2800644016089160299, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6474272188900475358}
-    - targetCorrespondingSourceObject: {fileID: -2800644016089160299, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7595979472683698683}
     - targetCorrespondingSourceObject: {fileID: -884142583348748651, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6832971396830558525}
+    - targetCorrespondingSourceObject: {fileID: 4423045620967985251, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4163160097946286066}
+    - targetCorrespondingSourceObject: {fileID: 4423045620967985251, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6889483265994208930}
   m_SourcePrefab: {fileID: 100100000, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
 --- !u!1 &297000337099294415 stripped
 GameObject:
@@ -252,33 +252,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1799370671242732104, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
---- !u!1 &3352877290116922831 stripped
+--- !u!1 &5387463714472380473 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -2800644016089160299, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4423045620967985251, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
   m_PrefabInstance: {fileID: 8621522713251027034}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6474272188900475358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3352877290116922831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c16f3aded789ae448a35133cd945bf5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 3
-  _impactEffectMaterial: {fileID: 2100000, guid: 5103ab749a58eaa4aa1d60eea19288be, type: 2}
-  _impactEffectDuration: 0.1
---- !u!65 &7595979472683698683
+--- !u!65 &4163160097946286066
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3352877290116922831}
+  m_GameObject: {fileID: 5387463714472380473}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -291,8 +276,23 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0034420472, y: 0.01806198, z: 0.027388133}
-  m_Center: {x: -0.026731621, y: 0, z: 0.015548829}
+  m_Size: {x: 0.0019729137, y: 0.06974593, z: 0.027388133}
+  m_Center: {x: -0.025997056, y: 0, z: 0.015548829}
+--- !u!114 &6889483265994208930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5387463714472380473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16f3aded789ae448a35133cd945bf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 3
+  _impactEffectMaterial: {fileID: 2100000, guid: 5103ab749a58eaa4aa1d60eea19288be, type: 2}
+  _impactEffectDuration: 0.1
 --- !u!4 &8083807708286255025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7d4dd98afe429d4dad27817191da426, type: 3}
@@ -321,4 +321,4 @@ MonoBehaviour:
   - {fileID: 2018350718747610097}
   - {fileID: 8621518447249850591}
   _workerPrefab: {fileID: 3553040615917015323, guid: 29801c6d68bfd204a977d430d0b68e35, type: 3}
-  _door: {fileID: 3352877290116922831}
+  _door: {fileID: 5387463714472380473}
