@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public enum WorkerState
@@ -7,6 +8,7 @@ public enum WorkerState
     Following,
     PickingUp,
     Carrying,
+    BeingCarried,
 }
 
 [RequireComponent(typeof(MovementComponent))]
@@ -28,6 +30,7 @@ public class WorkerAIControllerComponent : AIControllerComponent
     private float _idleWanderInterval;
     private Vector3? _idleWanderDestination;
     private bool _isCaptured = false;
+    private Vector3? _followOffset;
 
     public WorkerState State { get; private set; } = WorkerState.Idle;
 
@@ -71,12 +74,17 @@ public class WorkerAIControllerComponent : AIControllerComponent
         {
             UpdateCarryingState();
         }
+        else if (State == WorkerState.BeingCarried)
+        {
+            UpdateBeingCarriedState();
+        }
     }
 
     private void BeginIdleState()
     {
         State = WorkerState.Idle;
         _idleStartPosition = transform.position;
+        _followOffset = null;
     }
 
     private void UpdateIdleState()
@@ -131,18 +139,27 @@ public class WorkerAIControllerComponent : AIControllerComponent
         if (_player == null)
         {
             BeginIdleState();
-
             return;
         }
 
-        float distance = Vector3.Distance(transform.position, _player.transform.position);
-        if (distance > (_playerJoinDistance * 1.5f))
+        _movementComponent.IsSprinting = _player.MovementComponent.IsSprinting;
+        _movementComponent.IsJumping = _player.MovementComponent.IsJumping;
+
+        if (!_followOffset.HasValue)
+        {
+            Vector2 random = Random.insideUnitCircle * 2.0f;
+            _followOffset = new Vector3(random.x, 0.0f, random.y);
+        }
+
+        Vector3 dest = _player.transform.position + _followOffset.Value;
+        float distance = Vector3.Distance(transform.position, dest);
+        if (distance > (_playerJoinDistance * 3.0f))
         {
             BeginIdleState();
         }
         else if (distance >= _playerMinFollowDistance)
         {
-            MoveTowardsAndLookAt(_player.transform.position);
+            MoveTowardsAndLookAt(dest);
         }
         else
         {
@@ -194,6 +211,17 @@ public class WorkerAIControllerComponent : AIControllerComponent
         }
     }
 
+    private void UpdateBeingCarriedState()
+    {
+        if (_player == null)
+        {
+            BeginIdleState();
+            return;
+        }
+
+        transform.position = _player.transform.position - (_player.transform.forward * 1.0f);
+    }
+
     public void CommandCarryItem(CarryableComponent item)
     {
         _currentCarryable = item;
@@ -208,5 +236,16 @@ public class WorkerAIControllerComponent : AIControllerComponent
         {
             BeginIdleState();
         }
+    }
+
+    public void OnPickupSkrungle()
+    {
+       State = WorkerState.BeingCarried;
+    }
+
+    public void OnDropSkrungle()
+    {
+        transform.position = _player.transform.position;
+        BeginIdleState();
     }
 }

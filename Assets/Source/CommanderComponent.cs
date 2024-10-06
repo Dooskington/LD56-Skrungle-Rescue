@@ -6,10 +6,34 @@ public class CommanderComponent : MonoBehaviour
     [SerializeField] private float _commandRaycastDistance = 10.0f;
     [SerializeField] private LayerMask _carryableLayerMask;
 
+    private PlayerControllerComponent _player;
+    private bool _isCarryingSkrungles = false;
     private List<WorkerAIControllerComponent> _workers = new List<WorkerAIControllerComponent>();
 
     public IReadOnlyList<WorkerAIControllerComponent> Workers { get { return _workers; } }
     public int ItemsCollected { get; set; } = 0;
+
+    private void Start()
+    {
+        _player = gameObject.GetComponent<PlayerControllerComponent>();
+    }
+
+    private void Update()
+    {
+        if (_player == null)
+        {
+            return;
+        }
+
+        if (_player.MovementComponent.IsClimbing && !_isCarryingSkrungles)
+        {
+            PickupSkrungles();
+        }
+        else if (!_player.MovementComponent.IsClimbing && _isCarryingSkrungles && _player.MovementComponent.IsGrounded)
+        {
+            DropSkrungles();
+        }
+    }
 
     public void Command()
     {
@@ -50,5 +74,23 @@ public class CommanderComponent : MonoBehaviour
         }
 
         _workers.Remove(worker);
+    }
+
+    public void PickupSkrungles()
+    {
+        _isCarryingSkrungles = true;
+        foreach (WorkerAIControllerComponent worker in _workers)
+        {
+            worker.OnPickupSkrungle();
+        }
+    }
+
+    public void DropSkrungles()
+    {
+        _isCarryingSkrungles = false;
+        foreach (WorkerAIControllerComponent worker in _workers)
+        {
+            worker.OnDropSkrungle();
+        }
     }
 }

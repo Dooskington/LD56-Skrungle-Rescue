@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 public class PlayerControllerComponent : MonoBehaviour
 {
     private Camera _camera;
-    private MovementComponent _movementComponent;
     private InputAction _moveInput;
     private InputAction _jumpInput;
     private InputAction _interactInput;
     private InputAction _attackInput;
     private InputAction _sprintInput;
 
+    public MovementComponent MovementComponent { get; private set; }
     public CommanderComponent CommanderComponent { get; private set; }
     public CombatComponent CombatComponent { get; private set; }
     public HealthComponent HealthComponent { get; private set; }
@@ -19,7 +19,7 @@ public class PlayerControllerComponent : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main;
-        _movementComponent = GetComponent<MovementComponent>();
+        MovementComponent = GetComponent<MovementComponent>();
         CommanderComponent = GetComponent<CommanderComponent>();
         CombatComponent = GetComponent<CombatComponent>();
         HealthComponent = GetComponent<HealthComponent>();
@@ -32,10 +32,10 @@ public class PlayerControllerComponent : MonoBehaviour
 
         _attackInput.performed += ctx => Attack();
         _interactInput.performed += ctx => Interact();
-        _jumpInput.performed += ctx => _movementComponent.IsJumping = true;
-        _jumpInput.canceled += ctx => _movementComponent.IsJumping = false;
-        _sprintInput.performed += ctx => _movementComponent.IsSprinting = true;
-        _sprintInput.canceled += ctx => _movementComponent.IsSprinting = false;
+        _jumpInput.performed += ctx => MovementComponent.IsJumping = true;
+        _jumpInput.canceled += ctx => MovementComponent.IsJumping = false;
+        _sprintInput.performed += ctx => MovementComponent.IsSprinting = true;
+        _sprintInput.canceled += ctx => MovementComponent.IsSprinting = false;
     }
 
     private void OnDisable()
@@ -57,8 +57,8 @@ public class PlayerControllerComponent : MonoBehaviour
         right.Normalize();
 
         Vector2 moveInput = _moveInput.ReadValue<Vector2>().normalized;
-        _movementComponent.Movement = (forward * moveInput.y) + (right * moveInput.x);
-        _movementComponent.ClimbInput = moveInput;
+        MovementComponent.Movement = (forward * moveInput.y) + (right * moveInput.x);
+        MovementComponent.ClimbInput = moveInput;
     }
 
     private void Interact()

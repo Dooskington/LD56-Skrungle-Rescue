@@ -23,7 +23,6 @@ public class MovementComponent : MonoBehaviour
     private float _verticalVelocity = 0.0f;
     private int _jumpCount = 0;
     private bool _isLookingForClimbPoint = false;
-    private bool _isClimbing = false;
     private bool _exitedClimb = false;
     private Vector3 _climbHitboxOrigin;
     private Vector3 _climbDirection;
@@ -34,6 +33,8 @@ public class MovementComponent : MonoBehaviour
     public Vector3 Movement { get; set; }
     public bool IsJumping { get; set; }
     public bool IsSprinting { get; set; }
+    public bool IsClimbing { get; private set; }
+    public bool IsGrounded { get { return _characterController.isGrounded; } }
 
     private void Start()
     {
@@ -56,14 +57,14 @@ public class MovementComponent : MonoBehaviour
             _gravity = Mathf.Max(_gravity, -50.0f);
         }
 
-        float modifier = (!isGrounded && !_isClimbing) ? 1.0f : (IsSprinting ? _sprintModifier : 1.0f);
+        float modifier = (!isGrounded && !IsClimbing) ? 1.0f : (IsSprinting ? _sprintModifier : 1.0f);
         if (_animator != null)
         {
-            _animator.SetBool("IsClimbing", _isClimbing);
+            _animator.SetBool("IsClimbing", IsClimbing);
             _animator.SetFloat("SpeedModifier", modifier);
         }
 
-        if (_isClimbing)
+        if (IsClimbing)
         {
             Vector3 climbMovement = (_climbDirectionHorizontal * -ClimbInput.x) + new Vector3(0.0f, ClimbInput.y, 0.0f);
             _characterController.Move((climbMovement * _climbSpeed * modifier) * Time.deltaTime);
@@ -99,7 +100,7 @@ public class MovementComponent : MonoBehaviour
             }
             else
             {
-                _isClimbing = false;
+                IsClimbing = false;
                 _isLookingForClimbPoint = false;
             }
 
@@ -108,7 +109,7 @@ public class MovementComponent : MonoBehaviour
                 Collider[] colliders = Physics.OverlapBox(_climbHitboxOrigin, _climbHitboxSize, Quaternion.identity, _climbableLayerMask);
                 if (colliders.Length > 0)
                 {
-                    _isClimbing = true;
+                    IsClimbing = true;
                     _verticalVelocity = 0.0f;
                     
                     if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 3.0f, _climbableLayerMask))
@@ -121,7 +122,7 @@ public class MovementComponent : MonoBehaviour
                 }
                 else
                 {
-                    _isClimbing = false;
+                    IsClimbing = false;
                     _climbDirection = Vector3.zero;
                     _climbDirectionHorizontal = Vector3.zero;
                 }
@@ -138,9 +139,9 @@ public class MovementComponent : MonoBehaviour
 
             IsJumping = false;
 
-            if (_isClimbing)
+            if (IsClimbing)
             {
-                _isClimbing = false;
+                IsClimbing = false;
                 _isLookingForClimbPoint = false;
                 _exitedClimb = true;
                 _jumpCount = 0;
@@ -171,12 +172,12 @@ public class MovementComponent : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, Movement);
 
-        if (_isClimbing || _isLookingForClimbPoint)
+        if (IsClimbing || _isLookingForClimbPoint)
         {
-            Gizmos.color = _isClimbing ? Color.green : Color.yellow;
+            Gizmos.color = IsClimbing ? Color.green : Color.yellow;
             Gizmos.DrawWireCube(_climbHitboxOrigin, _climbHitboxSize);
 
-            if (_isClimbing)
+            if (IsClimbing)
             {
                 Gizmos.color = Color.magenta;
                 Gizmos.DrawRay(transform.position, _climbDirection);

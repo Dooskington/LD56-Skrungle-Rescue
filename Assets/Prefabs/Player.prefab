@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
-  _sprintModifier: 1.75
+  _sprintModifier: 2
   _turnSpeed: 25
   _jumpHeight: 3
   _canDoubleJump: 1
