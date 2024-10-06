@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public enum BugState
 {
@@ -9,13 +10,17 @@ public enum BugState
 
 public class BugAIControllerComponent : AIControllerComponent
 {
+    [SerializeField] private float _playerAttackDistance = 16.0f;
+    [SerializeField] private float _playerMinFollowDistance = 3.0f;
     [SerializeField] private float _idleWanderIntervalMinSeconds = 3.0f;
     [SerializeField] private float _idleWanderIntervalMaxSeconds = 6.0f;
     [SerializeField] private float _idleWanderRadius = 6.0f;
 
     public BugState State { get; private set; } = BugState.Idle;
     public HealthComponent HealthComponent { get; private set; }
+    public CombatComponent CombatComponent { get; private set; }
 
+    private PlayerControllerComponent _player;
     private Vector3 _idleStartPosition;
     private float _lastIdleWanderTime;
     private float _idleWanderInterval;
@@ -25,7 +30,10 @@ public class BugAIControllerComponent : AIControllerComponent
     {
         Init();
 
+        _player = FindFirstObjectByType<PlayerControllerComponent>();
+
         HealthComponent = GetComponent<HealthComponent>();
+        CombatComponent = GetComponent<CombatComponent>();
 
         BeginIdleState();
     }
@@ -78,10 +86,42 @@ public class BugAIControllerComponent : AIControllerComponent
                 _idleWanderDestination = null;
             }
         }
+
+        if (_player == null)
+        {
+            return;
+        }
+
+        float distance = Vector3.Distance(transform.position, _player.transform.position);
+        if (distance <= _playerAttackDistance)
+        {
+            State = BugState.Following;
+        }
     }
 
     private void UpdateFollowingState()
     {
+        if (_player == null)
+        {
+            BeginIdleState();
+            return;
+        }
 
+        float distance = Vector3.Distance(transform.position, _player.transform.position);
+        if (distance > (_playerAttackDistance * 1.5f))
+        {
+            BeginIdleState();
+        }
+        else if (distance >= _playerMinFollowDistance)
+        {
+            MoveTowardsAndLookAt(_player.transform.position);
+        }
+        else
+        {
+            LookAt(_player.transform.position);
+            _movementComponent.Movement = Vector3.zero;
+
+            CombatComponent.Attack();
+        }
     }
 }

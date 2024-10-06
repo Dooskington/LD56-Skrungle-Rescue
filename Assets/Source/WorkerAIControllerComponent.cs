@@ -41,6 +41,14 @@ public class WorkerAIControllerComponent : AIControllerComponent
         BeginIdleState();
     }
 
+    private void OnDisable()
+    {
+        if (_player != null)
+        {
+            _player.CommanderComponent.UnregisterWorker(this);
+        }
+    }
+
     private void Update()
     {
         if (State == WorkerState.Idle)
@@ -118,6 +126,8 @@ public class WorkerAIControllerComponent : AIControllerComponent
     {
         if (_player == null)
         {
+            BeginIdleState();
+
             return;
         }
 
@@ -146,6 +156,7 @@ public class WorkerAIControllerComponent : AIControllerComponent
         float distance = Vector3.Distance(transform.position, _currentCarryable.transform.position);
         if (distance < _carryableMinDistance)
         {
+            _currentCarryable.SetIsBeingCarried(true);
             State = WorkerState.Carrying;
         }
     }
@@ -166,9 +177,12 @@ public class WorkerAIControllerComponent : AIControllerComponent
         float distance = Vector3.Distance(transform.position, _dropOffTransform.position);
         if (distance < _dropOffMinDistance)
         {
+            _currentCarryable.SetIsBeingCarried(false);
             Destroy(_currentCarryable.gameObject);
             _currentCarryable = null;
-            State = WorkerState.Idle;
+            BeginIdleState();
+
+            _player.CommanderComponent.ItemsCollected += 1;
         }
     }
 

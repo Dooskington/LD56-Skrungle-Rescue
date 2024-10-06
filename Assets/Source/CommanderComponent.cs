@@ -8,6 +8,9 @@ public class CommanderComponent : MonoBehaviour
 
     private List<WorkerAIControllerComponent> _workers = new List<WorkerAIControllerComponent>();
 
+    public IReadOnlyList<WorkerAIControllerComponent> Workers { get { return _workers; } }
+    public int ItemsCollected { get; set; } = 0;
+
     public void Command()
     {
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _commandRaycastDistance, _carryableLayerMask))
@@ -37,5 +40,15 @@ public class CommanderComponent : MonoBehaviour
         }
 
         _workers.Add(worker);
+    }
+
+    public void UnregisterWorker(WorkerAIControllerComponent worker)
+    {
+        if (!_workers.Contains(worker))
+        {
+            return;
+        }
+
+        _workers.Remove(worker);
     }
 }
