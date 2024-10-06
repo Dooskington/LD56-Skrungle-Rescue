@@ -7,6 +7,9 @@ public class CombatComponent : MonoBehaviour
     [SerializeField] private float _attackCooldown = 0.25f;
     [SerializeField] private float _damage = 1.0f;
 
+    [Header("Animation")]
+    [SerializeField] private Animator _animator;
+
     private float _lastAttackTime;
     private bool _isAttacking;
 
@@ -46,5 +49,10 @@ public class CombatComponent : MonoBehaviour
         _attackCollider.gameObject.SetActive(true);
 
         CheckAttackHitbox();
+
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Attack");
+        }
     }
 }

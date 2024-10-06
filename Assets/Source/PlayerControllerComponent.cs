@@ -58,7 +58,6 @@ public class PlayerControllerComponent : MonoBehaviour
 
         Vector2 moveInput = _moveInput.ReadValue<Vector2>().normalized;
         _movementComponent.Movement = (forward * moveInput.y) + (right * moveInput.x);
-        //_movementComponent.ClimbInput = (Vector3.up * moveInput.y) + (right * moveInput.x);
         _movementComponent.ClimbInput = moveInput;
     }
 

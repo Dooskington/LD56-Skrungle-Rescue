@@ -16,6 +16,9 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] private Vector3 _climbHitboxSize = new Vector3(0.5f, 0.5f, 0.5f);
     [SerializeField] private LayerMask _climbableLayerMask;
 
+    [Header("Animation")]
+    [SerializeField] private Animator _animator;
+
     private CharacterController _characterController;
     private float _verticalVelocity = 0.0f;
     private int _jumpCount = 0;
@@ -54,6 +57,12 @@ public class MovementComponent : MonoBehaviour
         }
 
         float modifier = (!isGrounded && !_isClimbing) ? 1.0f : (IsSprinting ? _sprintModifier : 1.0f);
+        if (_animator != null)
+        {
+            _animator.SetBool("IsClimbing", _isClimbing);
+            _animator.SetFloat("SpeedModifier", modifier);
+        }
+
         if (_isClimbing)
         {
             Vector3 climbMovement = (_climbDirectionHorizontal * -ClimbInput.x) + new Vector3(0.0f, ClimbInput.y, 0.0f);
@@ -61,10 +70,23 @@ public class MovementComponent : MonoBehaviour
         }
         else
         {
-            _characterController.Move((Movement * _speed * modifier) * Time.deltaTime);
+            float finalSpeed = _speed * modifier;
+            _characterController.Move((Movement * finalSpeed) * Time.deltaTime);
             if (Movement.magnitude > float.Epsilon)
             {
                 transform.forward = Vector3.Lerp(transform.forward, Movement, _turnSpeed * Time.deltaTime);
+
+                if ((_animator != null) && isGrounded)
+                {
+                    _animator.SetBool("IsMoving", true);
+                }
+            }
+            else
+            {
+                if (_animator != null)
+                {
+                    _animator.SetBool("IsMoving", false);
+                }
             }
         }
 
@@ -108,6 +130,12 @@ public class MovementComponent : MonoBehaviour
 
         if (IsJumping)
         {
+            if (_animator != null)
+            {
+                _animator.SetTrigger("Jump");
+                _animator.SetBool("IsMoving", false);
+            }
+
             IsJumping = false;
 
             if (_isClimbing)

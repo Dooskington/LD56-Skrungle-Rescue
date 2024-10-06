@@ -9,6 +9,9 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private Material _impactEffectMaterial;
     [SerializeField] private float _impactEffectDuration = 0.1f;
 
+    [Header("Animation")]
+    [SerializeField] private Animator _animator;
+
     private List<Tuple<Renderer, Material>> _materials = new List<Tuple<Renderer, Material>>();
     private Sequence _impactSequence;
 
@@ -56,7 +59,15 @@ public class HealthComponent : MonoBehaviour
     {
         // TODO play effect?
 
-        Destroy(gameObject, 0.1f);
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Die");
+            Destroy(gameObject, 1.0f);
+        }
+        else
+        {
+            Destroy(gameObject, 0.1f);
+        }
     }
 
     public void TakeDamage(float damage)
