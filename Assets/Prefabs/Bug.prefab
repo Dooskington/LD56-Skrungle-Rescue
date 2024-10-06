@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 4466221498622038665}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.33, y: 0.64, z: 15.85}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -164,6 +164,13 @@ MonoBehaviour:
   _sprintModifier: 1.75
   _turnSpeed: 25
   _jumpHeight: 4
+  _canDoubleJump: 0
+  _canClimb: 0
+  _climbSpeed: 3
+  _climbHitboxSize: {x: 0.5, y: 0.5, z: 0.5}
+  _climbableLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &7756648756279519990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _idleWanderIntervalMinSeconds: 3
   _idleWanderIntervalMaxSeconds: 10
+  _idleWanderRadius: 6
 --- !u!114 &1772296045119435614
 MonoBehaviour:
   m_ObjectHideFlags: 0

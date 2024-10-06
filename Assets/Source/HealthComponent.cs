@@ -54,7 +54,9 @@ public class HealthComponent : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject, 1.0f);
+        // TODO play effect?
+
+        Destroy(gameObject, 0.1f);
     }
 
     public void TakeDamage(float damage)

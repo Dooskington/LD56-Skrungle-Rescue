@@ -16,10 +16,18 @@ public class WorkerAIControllerComponent : AIControllerComponent
     [SerializeField] private float _playerMinFollowDistance = 3.0f;
     [SerializeField] private float _carryableMinDistance = 1.0f;
     [SerializeField] private float _dropOffMinDistance = 1.0f;
+    [SerializeField] private float _idleWanderIntervalMinSeconds = 3.0f;
+    [SerializeField] private float _idleWanderIntervalMaxSeconds = 6.0f;
+    [SerializeField] private float _idleWanderRadius = 6.0f;
 
     private PlayerControllerComponent _player;
     private CarryableComponent _currentCarryable;
     private Transform _dropOffTransform;
+    private Vector3 _idleStartPosition;
+    private float _lastIdleWanderTime;
+    private float _idleWanderInterval;
+    private Vector3? _idleWanderDestination;
+    private bool _isCaptured = false;
 
     public WorkerState State { get; private set; } = WorkerState.Idle;
 
@@ -30,7 +38,7 @@ public class WorkerAIControllerComponent : AIControllerComponent
         _player = FindFirstObjectByType<PlayerControllerComponent>();
         _dropOffTransform = GameObject.Find("DropOff").transform;
 
-        State = WorkerState.Idle;
+        BeginIdleState();
     }
 
     private void Update()
@@ -53,14 +61,50 @@ public class WorkerAIControllerComponent : AIControllerComponent
         }
     }
 
+    private void BeginIdleState()
+    {
+        State = WorkerState.Idle;
+        _idleStartPosition = transform.position;
+    }
+
     private void UpdateIdleState()
     {
-        if (_player == null)
+        if (_isCaptured)
         {
             return;
         }
 
-        _movementComponent.Movement = Vector3.zero;
+        if ((Time.time - _lastIdleWanderTime) > _idleWanderInterval)
+        {
+            _lastIdleWanderTime = Time.time;
+            _idleWanderInterval = Random.Range(_idleWanderIntervalMinSeconds, _idleWanderIntervalMaxSeconds);
+
+            Vector3 randomDirection = Random.insideUnitSphere * _idleWanderRadius;
+            randomDirection.y = 0.0f;
+
+            Vector3 dest = _idleStartPosition + randomDirection;
+            dest.y = transform.position.y;
+            _idleWanderDestination = dest;
+        }
+
+        if (_idleWanderDestination.HasValue)
+        {
+            MoveTowardsAndLookAt(_idleWanderDestination.Value);
+
+            if (Vector3.Distance(transform.position, _idleWanderDestination.Value) < 0.1f)
+            {
+                _idleWanderDestination = null;
+            }
+        }
+        else
+        {
+            _movementComponent.Movement = Vector3.zero;
+        }
+
+        if (_player == null)
+        {
+            return;
+        }
 
         float distance = Vector3.Distance(transform.position, _player.transform.position);
         if (distance <= _playerJoinDistance)
@@ -132,5 +176,15 @@ public class WorkerAIControllerComponent : AIControllerComponent
     {
         _currentCarryable = item;
         State = WorkerState.PickingUp;
+    }
+
+    public void SetIsCaptured(bool isCaptured)
+    {
+        _isCaptured = isCaptured;
+
+        if (!_isCaptured)
+        {
+            BeginIdleState();
+        }
     }
 }

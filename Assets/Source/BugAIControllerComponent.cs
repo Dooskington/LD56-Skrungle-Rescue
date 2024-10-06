@@ -11,12 +11,12 @@ public class BugAIControllerComponent : AIControllerComponent
 {
     [SerializeField] private float _idleWanderIntervalMinSeconds = 3.0f;
     [SerializeField] private float _idleWanderIntervalMaxSeconds = 6.0f;
+    [SerializeField] private float _idleWanderRadius = 6.0f;
 
     public BugState State { get; private set; } = BugState.Idle;
     public HealthComponent HealthComponent { get; private set; }
 
     private Vector3 _idleStartPosition;
-    private float _idleWanderRadius = 6.0f;
     private float _lastIdleWanderTime;
     private float _idleWanderInterval;
     private Vector3? _idleWanderDestination;
