@@ -14,6 +14,7 @@ public class PlayerControllerComponent : MonoBehaviour
 
     public CommanderComponent CommanderComponent { get; private set; }
     public CombatComponent CombatComponent { get; private set; }
+    public HealthComponent HealthComponent { get; private set; }
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class PlayerControllerComponent : MonoBehaviour
         _movementComponent = GetComponent<MovementComponent>();
         CommanderComponent = GetComponent<CommanderComponent>();
         CombatComponent = GetComponent<CombatComponent>();
+        HealthComponent = GetComponent<HealthComponent>();
 
         _moveInput = InputSystem.actions.FindAction("Move");
         _jumpInput = InputSystem.actions.FindAction("Jump");
@@ -50,6 +52,7 @@ public class PlayerControllerComponent : MonoBehaviour
 
         Vector2 moveInput = _moveInput.ReadValue<Vector2>().normalized;
         _movementComponent.Movement = (forward * moveInput.y) + (right * moveInput.x);
+        _movementComponent.ClimbInput = (Vector3.up * moveInput.y) + (right * moveInput.x);
     }
 
     private void Interact()

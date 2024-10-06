@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 19272
+  controlID: 46452
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -620,9 +620,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -4.2017407, y: 100.54483, z: 152.47862}
+    m_Target: {x: 99.18157, y: 35.541477, z: 22.38566}
     speed: 2
-    m_Value: {x: -4.0990477, y: 100.54071, z: 152.42282}
+    m_Value: {x: 99.232574, y: 35.560104, z: 22.42924}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -668,13 +668,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.01431574, y: -0.59160864, z: -0.010924091, w: 0.80631524}
+    m_Target: {x: -0.020352677, y: 0.9798216, z: -0.16246772, w: -0.11865304}
     speed: 2
-    m_Value: {x: -0.014299264, y: -0.59243673, z: -0.010938694, w: 0.8054157}
+    m_Value: {x: -0.020587923, y: 0.9792686, z: -0.16116719, w: -0.12097221}
   m_Size:
     m_Target: 0.67279005
     speed: 2
-    m_Value: 0.6727929
+    m_Value: 0.67279005
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -770,9 +770,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a8b4fdff
-      m_LastClickedID: -150360
-      m_ExpandedIDs: 86c2fdfff2f7feffd40fffff92f1ffffa4faffffb2faffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 86c2fdfff2f7feffd40fffff92f1ffffa4faffffb2faffff28920000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 19273
+  controlID: 46453
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_SerializedViewNames: []
   m_SerializedViewValues: []
   m_PlayModeViewName: GameView
-  m_ShowGizmos: 0
+  m_ShowGizmos: 1
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
   m_TargetSize: {x: 1920, y: 1080}
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_EnterPlayModeBehavior: 0
   m_UseMipMap: 0
   m_VSyncEnabled: 0
-  m_Gizmos: 0
+  m_Gizmos: 1
   m_Stats: 0
   m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
@@ -919,7 +919,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -1026,7 +1026,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Source
+    - Assets/Source/UI
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1036,16 +1036,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Source
+  - Assets/Source/UI
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\dev\LD56
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3a950000
-    m_LastClickedID: 38202
-    m_ExpandedIDs: 00000000ce92000000ca9a3b
+    m_SelectedIDs: a6790100
+    m_LastClickedID: 96678
+    m_ExpandedIDs: 00000000ce9200003a95000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1100,24 +1100,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a8b4fdff
-    m_LastClickedInstanceID: -150360
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300005aaf000076a600000e48fcff882007008c68000074670000d26a00000e6e0000fa82000028d80100de5502001cb6000054fc09000668000026680000fc670000046800001e68000096210000906e0000446d0000663a0000643a000074f203009c210000e8b7010096ba0100caa40000508b010040610000fe600000f26800003a680000b07200008c070100d27100006095000090a000004a2702002e2d010098c40000207401001e740100000000000074010018ef0100bec900008a8d00008c8d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: AIControllerComponent
-      m_OriginalName: AIControllerComponent
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 90378
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 8}
@@ -1206,7 +1206,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -61468
+  m_LastSelectedObjectID: -1360
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1298,8 +1298,8 @@ MonoBehaviour:
     y: 0
     width: 372
     height: 1572.8
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -1344,7 +1344,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 544.59985
+    m_CachedPref: 171.79987
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1

@@ -13,7 +13,10 @@ public class AIControllerComponent : MonoBehaviour
     protected void MoveTowardsAndLookAt(Vector3 targetPosition)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
-        _movementComponent.Movement = direction;
+
+        Vector3 moveDir = direction;
+        moveDir.y = 0;
+        _movementComponent.Movement = moveDir;
 
         if (direction != Vector3.zero)
         {

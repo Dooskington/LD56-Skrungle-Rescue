@@ -13,6 +13,7 @@ public class HealthComponent : MonoBehaviour
     private Sequence _impactSequence;
 
     public float Health { get; private set; }
+    public bool IsDead { get { return Health <= 0; } }
 
     private void Start()
     {
@@ -53,19 +54,19 @@ public class HealthComponent : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 1.0f);
     }
 
     public void TakeDamage(float damage)
     {
         Health -= damage;
+        _impactSequence.Complete();
+        _impactSequence.Rewind();
+        _impactSequence.Play();
+
         if (Health <= 0)
         {
             Die();
         }
-
-        _impactSequence.Complete();
-        _impactSequence.Rewind();
-        _impactSequence.Play();
     }
 }

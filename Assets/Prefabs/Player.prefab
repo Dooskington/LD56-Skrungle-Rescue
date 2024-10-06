@@ -351,6 +351,13 @@ MonoBehaviour:
   _sprintModifier: 1.75
   _turnSpeed: 25
   _jumpHeight: 3
+  _canDoubleJump: 1
+  _canClimb: 1
+  _climbSpeed: 4
+  _climbHitboxSize: {x: 0.5, y: 0.5, z: 0.5}
+  _climbableLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &1568890332824897402
 MonoBehaviour:
   m_ObjectHideFlags: 0

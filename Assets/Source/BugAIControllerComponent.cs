@@ -4,6 +4,7 @@ public enum BugState
 {
     Idle,
     Following,
+    Dead,
 }
 
 public class BugAIControllerComponent : AIControllerComponent
@@ -12,6 +13,7 @@ public class BugAIControllerComponent : AIControllerComponent
     [SerializeField] private float _idleWanderIntervalMaxSeconds = 6.0f;
 
     public BugState State { get; private set; } = BugState.Idle;
+    public HealthComponent HealthComponent { get; private set; }
 
     private Vector3 _idleStartPosition;
     private float _idleWanderRadius = 6.0f;
@@ -23,11 +25,19 @@ public class BugAIControllerComponent : AIControllerComponent
     {
         Init();
 
+        HealthComponent = GetComponent<HealthComponent>();
+
         BeginIdleState();
     }
 
     private void Update()
     {
+        if ((State != BugState.Dead) && HealthComponent.IsDead)
+        {
+            State = BugState.Dead;
+            return;
+        }
+
         if (State == BugState.Idle)
         {
             UpdateIdleState();
