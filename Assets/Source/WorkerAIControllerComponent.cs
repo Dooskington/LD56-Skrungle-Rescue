@@ -39,6 +39,8 @@ public class WorkerAIControllerComponent : AIControllerComponent
         _dropOffTransform = GameObject.Find("DropOff").transform;
 
         BeginIdleState();
+
+        GameManager.Instance.RegisterWorker(this);
     }
 
     private void OnDisable()
@@ -47,6 +49,8 @@ public class WorkerAIControllerComponent : AIControllerComponent
         {
             _player.CommanderComponent.UnregisterWorker(this);
         }
+
+        GameManager.Instance.UnregisterWorker(this);
     }
 
     private void Update()
@@ -151,7 +155,7 @@ public class WorkerAIControllerComponent : AIControllerComponent
     {
         if (_currentCarryable == null)
         {
-            State = WorkerState.Idle;
+            BeginIdleState();
             return;
         }
 
@@ -169,7 +173,7 @@ public class WorkerAIControllerComponent : AIControllerComponent
     {
         if (_currentCarryable == null)
         {
-            State = WorkerState.Idle;
+            BeginIdleState();
             return;
         }
 

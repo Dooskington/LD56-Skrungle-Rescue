@@ -38,6 +38,12 @@ public class PlayerControllerComponent : MonoBehaviour
         _sprintInput.canceled += ctx => _movementComponent.IsSprinting = false;
     }
 
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     private void Update()
     {
         Cursor.lockState = CursorLockMode.Locked;
